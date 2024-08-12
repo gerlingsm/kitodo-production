@@ -12,8 +12,6 @@
 package org.kitodo.production.forms.createprocess;
 
 import java.util.List;
-import java.util.Objects;
-
 import javax.faces.model.SelectItem;
 
 import org.kitodo.data.database.beans.Ruleset;
@@ -65,16 +63,6 @@ public class AddMetadataDialog {
      * @return whether any further metadata can be added to currently selected structure element.
      */
     public boolean metadataAddableToStructureElement() throws InvalidMetadataValueException {
-
-        /*
-         * If an error occurred while loading the ruleset, prevents that it
-         * cannot be rendered because this function would give a
-         * NullPointerException, and the stack trace would hide the error.
-         */
-        if (Objects.isNull(createProcessForm.getRulesetManagement())) {
-            return false;
-        }
-
         prepareAddableMetadataForStructure();
         return !getAddableMetadata().isEmpty();
     }
